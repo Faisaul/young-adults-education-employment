@@ -9,51 +9,52 @@ young <- read_csv(
   show_col_types = FALSE
 )
 
+# Main analysis sample
+# Exclude young adults who are still enrolled in high school
+analysis <- young %>%
+  filter(school_level != "High school" | is.na(school_level))
 
 # Basic summary statistics
-summary(young$age)
-mean(young$employed)
-mean(young$college_enrolled)
-mean(young$female)
-mean(young$hispanic)
-
+summary(analysis$age)
+mean(analysis$employed)
+mean(analysis$college_enrolled)
+mean(analysis$female)
+mean(analysis$hispanic)
 
 # Employment rate by college enrollment
-young %>%
+analysis %>%
   group_by(college_enrolled) %>%
   summarize(
     observations = n(),
     employment_rate = mean(employed)
   )
 
-
 # Employment rate by age
-young %>%
+analysis %>%
   group_by(age) %>%
   summarize(
     observations = n(),
     employment_rate = mean(employed)
   )
 
-
 # Employment by age and college enrollment
-young %>%
+analysis %>%
   group_by(age, college_enrolled) %>%
   summarize(
     observations = n(),
     employment_rate = mean(employed),
     .groups = "drop"
   )
+
 # Weighted employment rate by college enrollment
-young %>%
+analysis %>%
   group_by(college_enrolled) %>%
   summarize(
     employment_rate = weighted.mean(employed, weight)
   )
 
-
 # Weighted employment rate by age and college enrollment
-young %>%
+analysis %>%
   group_by(age, college_enrolled) %>%
   summarize(
     employment_rate = weighted.mean(employed, weight),

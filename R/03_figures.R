@@ -3,23 +3,26 @@
 
 library(tidyverse)
 
-# Load clean data
+# Load cleaned data
 young <- read_csv(
   "data/clean/cps_young_adults_2024.csv",
   show_col_types = FALSE
 )
 
+# Main analysis sample
+# Exclude young adults who are still enrolled in high school
+analysis <- young %>%
+  filter(school_level != "High school" | is.na(school_level))
 
-# Calculate weighted employment rates
-employment_age <- young %>%
+# Weighted employment rate by age and college enrollment
+employment_age <- analysis %>%
   group_by(age, college_enrolled) %>%
   summarize(
     employment_rate = weighted.mean(employed, weight),
     .groups = "drop"
   )
 
-
-# Add labels
+# Add labels for the figure
 employment_age <- employment_age %>%
   mutate(
     college_status = ifelse(
@@ -29,8 +32,7 @@ employment_age <- employment_age %>%
     )
   )
 
-
-# Make figure
+# Create figure
 ggplot(
   employment_age,
   aes(
@@ -41,9 +43,7 @@ ggplot(
 ) +
   geom_line(linewidth = 1) +
   geom_point(size = 2) +
-  scale_y_continuous(
-    labels = scales::percent
-  ) +
+  scale_y_continuous(labels = scales::percent) +
   labs(
     title = "Employment Rates Among Young Adults",
     subtitle = "By age and college enrollment status, October 2024",
@@ -53,7 +53,6 @@ ggplot(
     caption = "Source: October 2024 Current Population Survey School Enrollment Supplement"
   ) +
   theme_minimal()
-
 
 # Save figure
 ggsave(
