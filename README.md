@@ -47,7 +47,7 @@ These estimates describe differences between the two groups and should not be in
 
 The figure compares weighted employment rates for college-enrolled and non-enrolled young adults between ages 18 and 24.
 
-`output/figures/employment_by_age.png`
+![Employment rates by age](output/figures/employment_by_age.png)
 
 ## Project Structure
 
