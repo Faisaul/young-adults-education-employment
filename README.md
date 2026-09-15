@@ -9,6 +9,7 @@ I use the October 2024 Current Population Survey (CPS) School Enrollment Supplem
 How do employment and work hours differ between college-enrolled and non-enrolled young adults?
 
 ## Data
+The raw CPS file is not included in this repository. The October 2024 CPS School Enrollment Supplement can be downloaded from the U.S. Census Bureau.
 
 **Source:** U.S. Census Bureau, October 2024 Current Population Survey (CPS) School Enrollment Supplement
 
@@ -58,8 +59,6 @@ The figure compares weighted employment rates for college-enrolled and non-enrol
         04_analysis.R
 
     data/
-        raw/
-            oct24pub.csv
         clean/
             cps_young_adults_2024.csv
 
@@ -69,9 +68,7 @@ The figure compares weighted employment rates for college-enrolled and non-enrol
         tables/
             regression_table.html
             hours_regression_table.html
-
-    paper/
-
+            
 ## Software
 
 - R
