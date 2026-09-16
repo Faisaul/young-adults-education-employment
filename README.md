@@ -1,5 +1,14 @@
 # College Enrollment and Employment Among Young Adults
 
+---
+
+![R](https://img.shields.io/badge/R-Econometrics-276DC3)
+![Data](https://img.shields.io/badge/Data-CPS-0072B2)
+![Method](https://img.shields.io/badge/Method-Weighted%20Regression-2EA44F)
+![Observations](https://img.shields.io/badge/Observations-7%2C319-E76F2E)
+![Project](https://img.shields.io/badge/Project-Independent%20Research-6A5ACD)
+
+---
 This independent research project examines how college enrollment is associated with employment and work hours among young adults in the United States.
 
 I use the October 2024 Current Population Survey (CPS) School Enrollment Supplement and focus on adults ages 18–24, comparing those currently enrolled in college with those who are not enrolled.
